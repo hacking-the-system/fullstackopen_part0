@@ -1,0 +1,13 @@
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note [{"note":"value"}]
+note over server:
+server creates a new note with 
+the received value and adds it
+to the existent ones
+end note
+server-->browser: Answers with a redirect to /notes
+
+note over browser:
+browser goes to /notes and
+loads the page again
+end note
+

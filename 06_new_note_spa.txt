@@ -1,0 +1,12 @@
+browser -> browser: Click on submit button
+
+note over browser:
+
+The browser creates a note
+with the data in the form, 
+adds it to the current notes
+and render the notes again
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa [{"note":"value"}]
+
