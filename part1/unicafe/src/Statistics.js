@@ -1,13 +1,10 @@
 import Title from "./Title";
+import Statistic from "./Statistic";
 
 const statistics = ({ values }) => {
-  const displayValues = values.map((element) => {
-    return (
-      <p>
-        {element.label} {element.value}
-      </p>
-    );
-  });
+  const displayValues = values.map((element) => (
+    <Statistic label={element.label} value={element.value} />
+  ));
   const all = values.map((element) => element.value).reduce((a, b) => a + b);
   const average =
     values
@@ -34,6 +31,7 @@ const statistics = ({ values }) => {
       .reduce((a, b) => a + b) /
       all) *
     100;
+  const positiveDisplayValue = (isNaN(positive) ? 0 : positive) + "%"
   if (all === 0) {
     return (
       <div>
@@ -46,9 +44,9 @@ const statistics = ({ values }) => {
       <div>
         <Title text="statistics" />
         {displayValues}
-        <p>all {all}</p>
-        <p>average {isNaN(average) ? 0 : average}</p>
-        <p>positive {isNaN(positive) ? 0 : positive}%</p>
+        <Statistic label="all" value={all} />
+        <Statistic label="average" value={isNaN(average) ? 0 : average} />
+        <Statistic label="positive" value={positiveDisplayValue} />
       </div>
     );
   }
