@@ -13,8 +13,8 @@ const App = () => {
 
   const [selected, setSelected] = useState(0);
 
-  const defaultValues = Array(anecdotes.length).fill(0)
-  const [values, setValues] = useState(defaultValues)
+  const defaultValues = Array(anecdotes.length).fill(0);
+  const [values, setValues] = useState(defaultValues);
 
   const randomIntFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -24,17 +24,32 @@ const App = () => {
     setSelected(randomIntFromInterval(0, anecdotes.length - 1));
 
   const vote = () => {
-    const copy = {...values}
-    copy[selected] += 1
-    setValues(copy)
-  }
+    const copy = [...values];
+    copy[selected] += 1;
+    setValues(copy);
+  };
+
+  const max = () => {
+    let i = 0;
+    let idx = 0;
+    values.forEach((element, index) => {
+      if (element > i) {
+        i = element;
+        idx = index;
+      }
+    });
+    return idx;
+  };
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
       <p>has {values[selected]} votes</p>
       <button onClick={vote}>vote</button>
       <button onClick={nextAnecdote}>next anecdote</button>
+      <h1>Anecdote with most votes</h1>
+      <p>{anecdotes[max()]}</p>
     </div>
   );
 };
