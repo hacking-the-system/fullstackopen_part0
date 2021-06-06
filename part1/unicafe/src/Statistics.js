@@ -34,15 +34,24 @@ const statistics = ({ values }) => {
       .reduce((a, b) => a + b) /
       all) *
     100;
-  return (
-    <div>
-      <Title text="statistics" />
-      {displayValues}
-      <p>all {all}</p>
-      <p>average {isNaN(average) ? 0 : average}</p>
-      <p>positive {isNaN(positive) ? 0 : positive}%</p>
-    </div>
-  );
+  if (all === 0) {
+    return (
+      <div>
+        <Title text="statistics" />
+        <p>No feedback given</p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <Title text="statistics" />
+        {displayValues}
+        <p>all {all}</p>
+        <p>average {isNaN(average) ? 0 : average}</p>
+        <p>positive {isNaN(positive) ? 0 : positive}%</p>
+      </div>
+    );
+  }
 };
 
 export default statistics;
