@@ -31,7 +31,7 @@ const statistics = ({ values }) => {
       .reduce((a, b) => a + b) /
       all) *
     100;
-  const positiveDisplayValue = (isNaN(positive) ? 0 : positive) + "%"
+  const positiveDisplayValue = (isNaN(positive) ? 0 : positive) + "%";
   if (all === 0) {
     return (
       <div>
@@ -43,10 +43,12 @@ const statistics = ({ values }) => {
     return (
       <div>
         <Title text="statistics" />
-        {displayValues}
-        <Statistic label="all" value={all} />
-        <Statistic label="average" value={isNaN(average) ? 0 : average} />
-        <Statistic label="positive" value={positiveDisplayValue} />
+        <table>
+          {displayValues}
+          <Statistic label="all" value={all} />
+          <Statistic label="average" value={isNaN(average) ? 0 : average} />
+          <Statistic label="positive" value={positiveDisplayValue} />
+        </table>
       </div>
     );
   }
